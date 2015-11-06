@@ -156,7 +156,11 @@
         canvas.height = image.height;
         var context = canvas.getContext('2d');
         context.drawImage(image, 0, 0);
-
+		options.backgroundColour = options.backgroundColour || null;
+		if (options.backgroundColour != null) {
+			context.fillStyle = options.backgroundColour;
+			context.fillRect(0, 0, canvas.width, canvas.height);
+		}
         var a = document.createElement('a');
         a.download = name;
         a.href = canvas.toDataURL('image/png');
